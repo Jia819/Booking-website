@@ -1,0 +1,338 @@
+header.header-container-general {
+  background-color: #F2A219;
+  display: table;
+}
+
+.logo-img-general {
+  width: 120px;
+}
+
+.user-img-container-general {
+  margin-top: 15px;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+span.user-login-text-general {
+  color: white;
+  font-family: 'Merriweather', serif;
+  display: table-cell;
+  vertical-align: top;
+  margin: 0 18px;
+  padding: 23px 40px 0 15px;
+  font-size: 1.8em;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.body-content-container-login {
+  text-align: center;
+  height: 100%;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.body-content-container-login h1 {
+  margin-top: 75px;
+  font-family: 'Merriweather', serif;
+}
+
+.body-content-container-login a {
+  text-decoration: underline;
+}
+
+.body-content-container-login p {
+  color: rgb(161, 161, 161);
+  font-size: 1.2em;
+}
+
+.body-content-container-general {
+  text-align: center;
+  height: 100%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.login-info-container {
+  margin-top: 40px;
+  box-sizing: border-box;
+}
+
+.login-info-container input {
+  width: 80%;
+  padding: 15px 5px;
+  border: none;
+  border-bottom: 1px rgb(161, 161, 161) solid;
+  box-sizing: border-box;
+}
+
+.login-info-container input:focus {
+  border-bottom: 1px rgb(161, 161, 161) solid;
+  border-radius: 3px;
+  outline: none;
+  background-color: lightgrey;
+}
+
+.login-button {
+  margin: 20px 0 10px 0;
+  width: 80%;
+  padding: 15px;
+  border: none;
+  border-radius: 3px;
+  color: rgb(161, 161, 161);
+}
+
+.login-button:active {
+  outline: none;
+  border: none;
+}
+
+p#small-text {
+  margin: 10px 0;
+  font-size: 1em;
+}
+
+.icons-container {
+  font-size: 2.5em;
+  margin: 10px 5px;
+  padding: 10px;
+}
+
+.icons-container i {
+  margin: 0 5px;
+}
+
+h2.welcome-text {
+  text-align: left;
+  margin: 30px 0;
+}
+
+ul.navigation-bar {
+  list-style-type: none;
+  display: block;
+  margin: initial;
+  margin-left: 50px;
+  margin-top: 25px;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  clear: both;
+}
+
+.navigation-bar li a {
+  background-color: white;
+  display: block;
+  color: #000;
+  padding: 19px 26px;
+  text-decoration: none;
+  border-right: 1.5px solid lightgrey;
+  border-bottom: 1.5px solid lightgrey;
+}
+
+.navigation-bar li a.active, .navigation-bar li a.logout {
+  background-color: #A8A8A7;
+  color: white;
+  padding-left: 15px;
+}
+
+.navigation-bar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.body-content {
+  display: block;
+  margin-left: 250px;
+  padding-left: 25px;
+}
+
+.account-content {
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+  width: 500px;
+}
+
+.profile-img {
+  width: 100px;
+  height: auto;
+  float: left;
+  clear: both;
+}
+
+.account-details {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+
+.ad {
+  margin: 20px 0;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 30px;
+}
+
+span.account-info {
+  display: block;
+  margin: 16px 0 15px 115px;
+  vertical-align: top;
+}
+
+span.user-info {
+  display: block;
+  margin: 16px 0 15px 0;
+}
+
+.user-info i {
+  width: 25px;
+  color: #BFBEBE;
+}
+
+.account-content a.normal, .body-content a.normal {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: orange;
+  padding: 16px;
+  transition: all 200ms ease;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: initial;
+  border: 1px solid orange;
+}
+
+.account-content a.transition:hover, .body-content a.transition:hover {
+  background-color: white;
+  color: orange;
+}
+
+button.join-button {
+  background-color: orange;
+  border: 0;
+  border-radius: 5px;
+  opacity: 1;
+  width: auto;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+}
+
+.restaurant-img {
+  float: left;
+  display: inline;
+  margin: 0 auto;
+  height: 120px;
+  width: 200px;
+}
+
+span.restaurant-info {
+  display: block;
+  margin: 0 0 15px 220px;
+  vertical-align: top;
+}
+
+span.restaurant-info-right {
+  display: block;
+  vertical-align: top;
+  margin-bottom: 15px;
+}
+
+.restaurant-details {
+  display: inline-block;
+  width: 500px;
+  word-wrap: break-word;
+}
+
+.restaurant-details-right {
+  margin-left: 10px;
+  width: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.search-background {
+  display: table;
+  margin-top: 50px;
+  background-color: black;
+  background-image: url(../images/search.jpg);
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 140px;
+  opacity: 0.85;
+}
+
+body {
+  background-color: white;
+}
+
+.edit:hover {
+  color: black;
+}
+
+.image-cropper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-img {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+
+#map {
+  width: 250px;
+  height: 250px;
+  float: left;
+  margin-top: 20px;
+}
+
+span.restaurant-booking-info {
+    display: block;
+    margin: 0 0 15px 20px;
+    vertical-align: top;
+}
+
+.google{
+  margin: initial;
+  margin-left: 40%;
+}
+
+.posts-user-details{
+  display: inline-block;
+  width: 75px;
+  text-align: center;
+}
+
+.posts-user-name{
+  margin: 0;
+  margin-top: 10px;
+}
+
+.posts-content{
+  width: 100%;
+  height: 120px;
+  overflow: scroll;
+  word-wrap: break-word;
+  border: 1px solid grey;
+  padding: 0 10px;
+}

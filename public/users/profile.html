@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Diners</title>
+  <link href="https://fonts.font.im/css?family=Oswald%7CBree+Serif%7CMerriweather%7CPacifico%7CPoppins" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/index_style.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/general_page_style.css">
+  <link rel="icon" href="/images/Icon.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="/javascripts/myjs.js" defer></script>
+</head>
+
+<body onload="setup();">
+  <div class="page-container" id="main">
+    <!--header content starts-->
+    <header class="header-container-general" id="header-container">
+      <div class="logo">
+        <a href="../">
+          <img class="logo-img-general" src="../images/Logo.png" alt="Diners Logo" />
+        </a>
+      </div>
+      <div class="menu-container">
+        <span id="menu-text">MENU<i class="material-icons" id="down_arrow">&#xe313;</i></span>
+      </div>
+      <div class="user-img-container-general">
+        <a href="/users/profile.html">
+          <img class="user-img" v-bind:src="img" alt="user-login" />
+        </a>
+      </div>
+      <span class="user-login-text-general"><a href="profile.html">{{ first_name }}</a></span>
+    </header>
+    <!--header content ends-->
+    <div class="body-content-container-general" style="height: 100%;  text-align: left;">
+      <h2 class="welcome-text">Hi {{ first_name }}, Welcome to your profile</h2>
+      <ul class="navigation-bar" style="float: left;">
+        <li><a class="active">ACCOUNT PROFILE</a></li>
+        <li><a href="javascript:swapTag(0)">My Details</a></li>
+        <li><a href="javascript:swapTag(1)">My Booking</a></li>
+        <li><a href="javascript:swapTag(2)">My Rewards</a></li>
+        <li><a href="javascript:swapTag(3)">My Restaurant</a></li>
+        <li><a href="javascript:swapTag(4)">FAQ</a></li>
+        <li><a class="logout" href="javascript:signOut()">LOG OUT</a></li>
+      </ul>
+      <div class="body-content" v-show="tab === 0">
+        <section class="account-content">
+          <div style="border-right: 1.5px solid lightgrey;">
+            <h2>Account Details</h2>
+            <div class="account-details" style="position: relative;">
+              <div class="image-cropper" style="float: left;">
+                <img v-bind:src="img" alt="profile picture" class="profile-img" />
+              </div>
+              <div id="edit-profile" style="position: absolute; left: 82px; color: grey;">
+                <i id="upload-button" class="fas edit" style="font-size: 18px; cursor: pointer;">&#xf044;</i>
+                <form id="profile-form" action="/users/uploadimg" method="post" enctype="multipart/form-data">
+                    <input id="field" type="file" name="avatar" accept="image/*" hidden/>
+                    <input v-model="user_UID" type="number" name="uid" hidden/>
+                </form>
+              </div>
+              <span class="account-info">
+                <i class="material-icons" style="vertical-align: middle">&#xe0e1;</i>
+                <span style="margin-left: 10px; vertical-align: middle;">{{ email }}</span>
+              </span>
+              <span class="account-info">
+                <i class="material-icons" style="vertical-align: middle">&#xe897;</i>
+                <span style="margin-left: 10px; vertical-align: middle;">*****</span>
+              </span>
+            </div>
+            <div class="account-details" style="margin: 10px 0;">
+              <a href="javascript:swapTag(9)" class="transition normal">Edit Account</a>
+            </div>
+          </div>
+          <hr style="border-color: lightgrey; border-style: solid; border-width: 1px;" />
+          <div class="account-details" style="margin-top: 5px;">
+            <h3 style="margin: 0">Personal Details</h3>
+            <span class="user-info">
+              <i class="material-icons" style="vertical-align: middle">&#xe7fd;</i>
+              <span style="margin-left: 12px; vertical-align: middle;">{{ first_name + "\t" + last_name }}</span>
+            </span>
+            <span class="user-info">
+              <i class="fas" style="vertical-align: middle">&#xf015;</i>
+              <span style="margin-left: 12px; vertical-align: middle;">{{ address }}</span>
+            </span>
+            <span class="user-info">
+              <i class="material-icons" style="vertical-align: middle">&#xe0c8;</i>
+              <span style="margin-left: 12px; vertical-align: middle;">{{ postcode }}</span>
+            </span>
+            <span class="user-info">
+              <i class="material-icons" style="vertical-align: middle">&#xe32c;</i>
+              <span style="margin-left: 12px; vertical-align: middle;">{{ contact }}</span>
+            </span>
+            <a href="javascript:swapTag(10)" class="transition normal">Update Account Information</a>
+          </div>
+          <hr style="margin: 20px 0;" />
+          <h3 style="margin: 0">Social Profile</h3>
+          <span class="user-info">
+            <a href="/users/profile.html" class="normal" style="background-color: white; padding: 10px; border-color: black;">
+              <img src="https://img.icons8.com/color/48/000000/google-logo.png" style="color: black; width: 30px;" alt="google icon">
+              <span style="color: black; display: inline-block; vertical-align: top; margin-top: 8px;">Link Google</span>
+            </a>
+            <a href="/users/profile.html" class="normal" style="background-color: blue; padding: 10px; vertical-align: top; height: 33px; border-color: lightblue;">
+              <i class="fab" style="color: white; font-size: 30px;">&#xf09a;</i>
+              <span style="color: white; display: inline-block; vertical-align: top; margin-top: 8px; margin-left: 5px;">Link Facebook</span>
+            </a>
+          </span>
+          <hr style="margin: 20px 0;" />
+          <a href="/users/logout" class="transition normal">Log out</a>
+        </section>
+        <section class="ad">
+          <img src="/images/Promotion.jpg" alt="ads" style="width: 250px" />
+        </section>
+      </div>
+      <div class="body-content" v-show="tab === 9">
+        <h2>Change password: </h2>
+        <section class="login-info-container">
+          <form onsubmit="updatePassword(); return false;">
+            <h3>{{ username }}</h3>
+            <input type="password" v-model="updatePassword.password1" placeholder="Old password" required/>
+            <input type="password" v-model="updatePassword.password2" placeholder="New password" required/>
+            <input type="password" v-model="updatePassword.password3" placeholder="Re-enter New password" required/>
+            <button class="login-button" type="submit">Save</button>
+          </form>
+        </section>
+      </div>
+      <div class="body-content" v-show="tab === 10">
+        <h2>Edit your profile: </h2>
+        <div class="image-cropper">
+          <img v-bind:src="img" alt="profile picture" class="profile-img" />
+        </div>
+        <section class="login-info-container">
+          <form onsubmit="updateProfile(); return false;">
+            <input type="text" v-model="updateProfile.first" placeholder="First name" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="updateProfile.last" placeholder="Last name" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="updateProfile.email" placeholder="Email address" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="updateProfile.address" placeholder="Address" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="updateProfile.postcode" placeholder="Postcode" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="updateProfile.contact" placeholder="Contact" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+          <button class="login-button" type="submit">Save</button>
+          </form>
+        </section>
+      </div>
+      <div class="body-content" v-show="tab === 11" style="margin-top: 54px;">
+        <h2>Booking from your <span style="color:orange">{{ res_name }}</span>: </h2>
+        <orders v-for="item in bookObj" v-bind:name="item.name" v-bind:contact="item.contact" v-bind:email="item.email" v-bind:pax="item.pax" v-bind:time="item.time"
+                      v-bind:date="item.date" v-bind:order="item.order_ref"></orders>
+        <button onclick="swapTag(3);" style="margin-top: 10px">Back</button>
+      </div>
+      <div class="body-content" v-show="tab === 1 || tab === 8" style="margin-top: 54px;">
+        <section v-show="tab === 1">
+          <h2>Your booking:</h2>
+          <booking v-for="item in bookObj" v-bind:name="item.res_name" v-bind:resid="item.res_RID"
+                      v-bind:address="item.res_address" v-bind:contact="item.res_contact" v-bind:url="item.res_image"
+                      v-bind:seats="item.pax" v-bind:time="item.time" v-bind:date="item.date" v-bind:nref="item.nref"></booking>
+        </section>
+        <section v-show="tab === 8" class="login-info-container">
+          <h2>Your booking in <span style="color:orange;">{{ updateRes.name }}</span></h2>
+          <form onsubmit="updateBooking(); return false;">
+            <input type="date" name="date" id="date" v-bind:min="searchInfo.min_date" v-model="updateRes.date" />
+            <select name="time" id="time" v-model="updateRes.time">
+              <option>7.00 a.m</option>
+              <option>8.00 a.m</option>
+              <option>9.00 a.m</option>
+              <option>10.00 a.m</option>
+              <option>11.00 a.m</option>
+              <option>12.00 a.m</option>
+              <option>1.00 p.m</option>
+              <option>2.00 p.m</option>
+              <option>3.00 p.m</option>
+              <option>4.00 p.m</option>
+              <option>5.00 p.m</option>
+              <option>6.00 p.m</option>
+              <option>7.00 p.m</option>
+              <option>8.00 p.m</option>
+              <option>9.00 p.m</option>
+              <option>10.00 p.m</option>
+              <option>11.00 p.m</option>
+            </select>
+            <select name="people" id="people" v-model="updateRes.seats">
+              <option value="1">1 person</option>
+              <option value="2">2 persons</option>
+              <option value="3">3 persons</option>
+              <option value="4">4 persons</option>
+              <option value="5">5 persons</option>
+              <option value="6">6 persons</option>
+              <option value="7+">7+ persons</option>
+            </select>
+            <button class="submit" type="submit">Save</button>
+            <button class="submit" onclick="window.location.reload()">Cancel</button>
+          </form>
+        </section>
+      </div>
+
+      <div class="body-content" v-show="tab === 3 || tab === 6 || tab === 7" style="padding-top: 1px">
+        <section v-if="user_auth_level === 1 && tab === 3">
+          <h2>You haven't registered to be a restaurateur yet!<br />Join us now if you own a restaurant</h2>
+          <button class="join-button" v-on:click="tab = 6">
+            <span>Become a part of our Diners family</span>
+          </button>
+        </section>
+        <section v-else-if="tab === 6" class="login-info-container">
+          <h2>Restaurateur Register Form</h2>
+          <form id="res-register-form" onsubmit="addRestaurant(); return false;">
+            <input type="text" v-model="res_name" placeholder="Restaurant name" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="res_city" placeholder="City" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="res_address" placeholder="Address" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="res_contact" placeholder="Contact number" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <button class="login-button" type="submit">Submit</button>
+          </form>
+        </section>
+        <section v-else-if="tab === 3 && user_auth_level === 2">
+          <h2>Your restaurants:</h2>
+          <restaurant v-for="item in resObj" v-bind:name="item.res_name" v-bind:city="item.res_city" v-bind:resid="item.res_RID"
+                      v-bind:address="item.res_address" v-bind:contact="item.res_contact" v-bind:url="item.img"
+                      v-bind:seats="item.seats" v-bind:breakfast="item.meal.breakfast" v-bind:lunch="item.meal.lunch"
+                      v-bind:dinner="item.meal.dinner" v-bind:description="item.description" v-bind:modify="item.modify"></restaurant>
+          <a href="javascript:swapTag(6)" class="transition normal">Add restaurant</a>
+        </section>
+        <section v-else-if="tab === 7" class="login-info-container">
+          <h2>Modify <span style="color: orange;">{{ resObj[modify_index].res_name }}</span></h2>
+          <img v-bind:src="resObj[modify_index].img" alt="restaurant picture" class="restaurant-img" />
+          <form id="res-profile-form" action="/users/uploadres" method="post" enctype="multipart/form-data">
+              <input id="res-field" type="file" name="avatar" accept="image/*" value="Browse Image" style="border: none;"/>
+              <br />
+              <button type="submit">Change</button>
+              <input v-model="updateRes.rid" type="number" name="rid" hidden/>
+          </form>
+          <form onsubmit="updateRestaurant(); return false;">
+            <input type="text" v-model="updateRes.name" v-bind:value="resObj[modify_index].res_name" placeholder="Restaurant name" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="updateRes.city" v-bind:value="resObj[modify_index].res_city" placeholder="City" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="updateRes.address" v-bind:value="resObj[modify_index].res_address" placeholder="Address" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="text" v-model="updateRes.contact" v-bind:value="resObj[modify_index].res_contact" placeholder="Contact number" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <input type="number" v-model="updateRes.seats" v-bind:value="resObj[modify_index].seats" placeholder="approx. seats available for a given time(eg. breakfast/lunch/dinner)" min="0" style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;" />
+            <h4>Meal Provided:</h4>
+            <input style="width: auto" type="checkbox" id="breakfast" v-model="updateRes.breakfast" v-bind:value="resObj[modify_index].meal.breakfast" />
+            <label for="breakfast">Breakfast</label>
+            <input style="width: auto" type="checkbox" id="lunch" v-model="updateRes.lunch" v-bind:value="resObj[modify_index].meal.lunch" />
+            <label for="lunch">Lunch</label>
+            <input style="width: auto" type="checkbox" id="dinner" v-model="updateRes.dinner" v-bind:value="resObj[modify_index].meal.dinner" />
+            <label for="dinner">Dinner</label>
+            <h4>Description:</h4>
+            <textarea v-model="updateRes.description" placeholder="Description" style="width: 80%; height:200px; border: 1px black solid;">
+              {{resObj[modify_index].description}}
+            </textarea>
+            <button class="login-button" type="submit">Save</button>
+          </form>
+        </section>
+      </div>
+    </div>
+
+    <!--body content ends-->
+    <div class="foot-container">
+      <div class="foot-content-container">
+        <div class="foot-content-text">
+          <h2>FOR DINERS</h2>
+          <a href="index.html">Special Offers</a>
+          <a href="index.html">Diner Support</a>
+        </div>
+        <div class="foot-content-text">
+          <h2>FOR RESTAURANTS</h2>
+          <a href="index.html">Why join Diners?</a>
+          <a href="index.html">Restaurant Support</a>
+        </div>
+        <div class="foot-content-text">
+          <h2>ABOUT DINERS</h2>
+          <a href="index.html">About Us</a>
+          <a href="index.html">Our Partners</a>
+          <a href="index.html">Join the team</a>
+        </div>
+        <div class="foot-content-text">
+          <h2>DOWNLOAD</h2>
+          <a href="index.html">Andoird App</a>
+          <a href="index.html">iPhone App</a>
+        </div>
+        <div class="about-icons-container">
+          <i class='fab fa-facebook-square'></i>
+          <i class='fab fa-instagram'></i>
+          <i class='fab fa-twitter-square'></i>
+        </div>
+      </div>
+      <div class="rights-container">
+        <p id="rights">© 2019 Diners. All rights reserved.</p>
+        <div>
+          <span>
+            <a href="index.html">Terms and Condition</a>
+            <span class="split">|</span>
+            <a href="index.html">Privacy Policy</a>
+            <span class="split">|</span>
+            <a href="index.html">Reviews Policy</a>
+            <span class="split">|</span>
+            <a href="index.html">Contact Us</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!--foot content ends-->
+  </div>
+</body>
+
+
+</html>

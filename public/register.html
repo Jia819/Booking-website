@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diners</title>
+    <link href="https://fonts.font.im/css?family=Oswald%7CBree+Serif%7CMerriweather%7CPacifico%7CPoppins" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheets/index_style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/general_page_style.css">
+    <link rel="icon" href="images/Icon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="javascripts/myjs.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page-container" onload="loadUserPage();">
+      <!--header content starts-->
+      <header class="header-container-general" id="header-container">
+        <div class="logo">
+          <a href="/">
+            <img class="logo-img-general" src="images/Logo.png" alt="Diners Logo"/>
+          </a>
+        </div>
+        <div class="menu-container">
+          <span id="menu-text">MENU<i class="material-icons" id="down_arrow">&#xe313;</i></span>
+        </div>
+        <div class="user-img-container-general">
+          <a href="/">
+            <img class="user-img" src="images/user-image.png" alt="user-login"/>
+          </a>
+        </div>
+        <span class="user-login-text-general"><a href="login.html">Login</a></span>
+      </header>
+      <!--header content ends-->
+      <div class="body-content-container-login">
+        <h2 style="text-align: left; margin-left: 10%;">Register</h2>
+        <div class="login-info-container">
+          <form id="register-form" onsubmit="register(); return false;">
+            <div style="text-align: left; position: relative;">
+              <input type="text" v-model="first_name" placeholder="First Name" required style="width: 35%; margin-left: 10%; border: 1px rgb(161, 161, 161) solid;"/>
+              <input type="text" v-model="last_name" placeholder="Last Name" required style="width: 35%; left: 55%; position: absolute; border: 1px rgb(161, 161, 161) solid;"/>
+            </div>
+            <input type="text" v-model="username" placeholder="Username" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;"/>
+            <input type="password" v-model="password1" placeholder="Password" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;"/>
+            <input type="password" v-model="password2" placeholder="Re-enter password" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;"/>
+            <input type="email" v-model="email" placeholder="Email" required style="margin-top: 10px; border: 1px rgb(161, 161, 161) solid;"/>
+            <button class="login-button" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <!--body content ends-->
+      <div class="foot-container">
+        <div class="foot-content-container">
+          <div class="foot-content-text">
+              <h2>FOR DINERS</h2>
+              <a href="/">Special Offers</a>
+              <a href="/">Diner Support</a>
+          </div>
+          <div class="foot-content-text">
+              <h2>FOR RESTAURANTS</h2>
+              <a href="/">Why join Diners?</a>
+              <a href="/">Restaurant Support</a>
+          </div>
+          <div class="foot-content-text">
+              <h2>ABOUT DINERS</h2>
+              <a href="/">About Us</a>
+              <a href="/">Our Partners</a>
+              <a href="/">Join the team</a>
+          </div>
+          <div class="foot-content-text">
+              <h2>DOWNLOAD</h2>
+              <a href="/">Andoird App</a>
+              <a href="/">iPhone App</a>
+          </div>
+          <div class="about-icons-container">
+            <i class='fab fa-facebook-square'></i>
+            <i class='fab fa-instagram'></i>
+            <i class='fab fa-twitter-square'></i>
+          </div>
+        </div>
+        <div class="rights-container">
+          <p id="rights">© 2019 Diners. All rights reserved.</p>
+          <div>
+            <span>
+              <a href="/">Terms and Condition</a>
+              <span class="split">|</span>
+              <a href="/">Privacy Policy</a>
+              <span class="split">|</span>
+              <a href="/">Reviews Policy</a>
+              <span class="split">|</span>
+              <a href="/">Contact Us</a>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!--foot content ends-->
+    </div>
+  </body>
+</html>
